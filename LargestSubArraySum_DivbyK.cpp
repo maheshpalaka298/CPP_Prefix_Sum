@@ -1,12 +1,22 @@
-long maximumSumSubarray(int K, vector<int> &Arr , int N){
-        // code here 
-        long arr[N+1]={};
-        for (int i=1;i<=N;i++){
-            arr[i]=arr[i-1]+Arr[i-1];
-        }
-        long ans=0;
-        for (int i=1,j=K;j<=N;i++,j++){
-            long x=arr[j]-arr[i-1];
-            ans=max(ans,x);
-        }
-        return ans;
+int longSubarrWthSumDivByK(int arr[], int n, int k)
+	{
+	    // Complete the function
+	    unordered_map<int,int>mp;
+	    mp[0]=-1;
+	    int maxi=0;
+	    int rem;
+	    int su=0;
+	    for (int i=0;i<n;i++){
+	        su+=arr[i];
+	        rem=su%k;
+	        if (rem<0) rem+=k;
+	        if (mp.count(rem))
+	        {
+    	        maxi=max(maxi,i-mp[rem]);
+    	        continue;
+	        }
+	        mp[rem]=i;
+	        
+	        
+	    }
+	    return maxi;
