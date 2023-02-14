@@ -28,6 +28,25 @@ end[] = {4, 4, 6}rst<b.first;
         
         return cnt;
       
+        
+ //GREEDY
+        
+        
+  sort(start,start+N);
+        sort(end,end+N);
+        
+        int cnt=1;
+        int j=0;
+        for (int i=1;i<N;i++){
+            if (start[i]<end[j]){
+                cnt++;
+            }
+            else{
+                j++;
+            }
+        }
+        return cnt;
+        
 //  N = 3
 // start[] = {1, 2, 3}
 // end[] = {4, 4, 6}
